@@ -9,3 +9,6 @@ insecure
 coffeescript
 stylus-latest
 iron-router
+accounts-ui-unstyled
+accounts-facebook
+force-ssl

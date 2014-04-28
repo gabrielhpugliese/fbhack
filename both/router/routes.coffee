@@ -9,9 +9,5 @@ Router.configure
   routeControllerNameConverter: 'upperCamelCase'
 
 Router.map ->
-  ### 
-    Example:
-      this.route 'home', path: '/'
-  ### 
-# don't delete the end map comment - em purpose
+  this.route 'index', path: '/'
 # end map
