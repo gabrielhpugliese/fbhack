@@ -8,16 +8,10 @@ Example:
 ### 
 
 
-Template.Index.helpers {}
-###
-Example: 
- items: ->
-   Items.find()
-###
+Template.Index.helpers
+  stepGreater: (step) ->
+    Session.get("step") >= step
 
-###
- Index: Lifecycle Hooks
-###
 Template.Index.created = ->
 
 Template.Index.rendered = ->

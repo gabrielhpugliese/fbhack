@@ -15,3 +15,7 @@ force-ssl
 bootstrap-3
 npm
 http
+handlebar-helpers
+facebook-sdk
+underscore
+jquery

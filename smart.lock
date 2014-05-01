@@ -5,7 +5,9 @@
       "stylus-latest": {},
       "iron-router": {},
       "bootstrap-3": {},
-      "npm": {}
+      "npm": {},
+      "handlebar-helpers": {},
+      "facebook-sdk": {}
     },
     "packages": {
       "stylus-latest": {
@@ -27,6 +29,16 @@
         "git": "https://github.com/arunoda/meteor-npm.git",
         "tag": "v0.2.6",
         "commit": "177ab6118de5bf8cffb19481343d5762ff7a2aaf"
+      },
+      "handlebar-helpers": {
+        "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
+        "tag": "v0.1.1",
+        "commit": "0b407ab65e7c1ebd53d71aef0de2e2c1d21a597c"
+      },
+      "facebook-sdk": {
+        "git": "https://github.com/hugesuccess/facebook-sdk.git",
+        "tag": "v0.0.44",
+        "commit": "cb71b860085ec6453b61644b31f6351e7de2c1b0"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
