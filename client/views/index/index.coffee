@@ -8,7 +8,9 @@ Example:
 ### 
 
 
-Template.Index.helpers {}
+Template.Index.helpers
+  stepGreater: (step) ->
+    Session.get("step") >= step
 ###
 Example: 
  items: ->

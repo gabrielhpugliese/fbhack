@@ -1,2 +1,22 @@
 <template name="Index">
+    {{#if stepGreater '1' }}  
+      1) #paritu
+      {{> PartiuForm}}
+      1
+    {{/if}}
+
+    {{#if stepGreater '2' }}
+      2) #paritu
+      {{> PartiuForm}}
+    {{/if}}
+
+    {{#if stepGreater '3' }}  
+      3) #paritu
+      {{> PartiuForm}}
+    {{/if}}
+
+    {{#if stepGreater '4' }}  
+      4) #paritu
+      {{> PartiuForm}}
+    {{/if}}
 </template>
