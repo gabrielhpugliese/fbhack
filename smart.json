@@ -3,6 +3,7 @@
     "stylus-latest": {},
     "iron-router": {},
     "bootstrap-3": {},
-    "handlebar-helpers": {}
+    "handlebar-helpers": {},
+    "facebook-sdk": {}
   }
 }

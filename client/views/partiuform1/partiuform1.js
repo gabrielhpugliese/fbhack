@@ -1,7 +1,7 @@
 /*****************************************************************************/
 /* PartiuForm: Event Handlers and Helpers */
 /*****************************************************************************/
-Template.PartiuForm.events({
+Template.Partiuform1.events({
   'submit form': function(e,tumbl){
     e.preventDefault();
 
@@ -15,7 +15,7 @@ Template.PartiuForm.events({
   }
 });
 
-Template.PartiuForm.helpers({
+Template.Partiuform1.helpers({
   /*
    * Example: 
    *  items: function () {
@@ -27,11 +27,11 @@ Template.PartiuForm.helpers({
 /*****************************************************************************/
 /* PartiuForm: Lifecycle Hooks */
 /*****************************************************************************/
-Template.PartiuForm.created = function () {
+Template.Partiuform1.created = function () {
 };
 
-Template.PartiuForm.rendered = function () {
+Template.Partiuform1.rendered = function () {
 };
 
-Template.PartiuForm.destroyed = function () {
+Template.Partiuform1.destroyed = function () {
 };

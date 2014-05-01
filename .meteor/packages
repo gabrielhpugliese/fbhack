@@ -14,3 +14,6 @@ accounts-facebook
 force-ssl
 bootstrap-3
 handlebar-helpers
+facebook-sdk
+underscore
+jquery

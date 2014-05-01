@@ -11,17 +11,10 @@ Example:
 Template.Index.helpers
   stepGreater: (step) ->
     Session.get("step") >= step
-###
-Example: 
- items: ->
-   Items.find()
-###
 
-###
- Index: Lifecycle Hooks
-###
 Template.Index.created = ->
 
 Template.Index.rendered = ->
+  FB.XFBML.parse()
 
 Template.Index.destroyed = ->
