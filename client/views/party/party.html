@@ -2,8 +2,21 @@
   <ul>
     {{#each posts}}
       <li>
+        <img src="{{post.icon}}" alt="" />
       {{#if $eq post.type 'status'}}
         {{> TextPost}}
+      {{/if}}
+    
+      {{#if $eq post.type 'photo'}}
+        {{> PhotoPost}}
+      {{/if}}
+
+      {{#if $eq post.type 'video'}}
+        {{> VideoPost}}
+      {{/if}}
+
+      {{#if $eq post.type 'link'}}
+        {{> LinkPost}}
       {{/if}}
       </li>
     {{/each}}
@@ -12,4 +25,19 @@
 
 <template name="TextPost">
   {{post.from.name}}: {{$or post.story post.message}} 
+</template>
+
+<template name="PhotoPost">
+  {{post.story}}: <img src="{{post.picture}}" alt="">
+</template>
+
+<template name="VideoPost">
+  {{post.from.name}}: {{post.message}}
+  {{post.description}}
+  <img src="{{post.picture}}" alt="" />
+</template>
+
+<template name="LinkPost">
+  {{post.from.name}}: {{$or post.story post.message}}
+  {{post.description}}
 </template>
