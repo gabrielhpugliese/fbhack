@@ -11,4 +11,5 @@ Router.configure
 Router.map ->
   this.route 'redirect', path: '/', template: "Index", controller: "RedirectController"
   this.route 'index', path: '/partiu/:step'
+  this.route 'party', path: '/party/:_id'
 # end map

@@ -1,0 +1,15 @@
+<template name="Party">
+  <ul>
+    {{#each posts}}
+      <li>
+      {{#if $eq post.type 'status'}}
+        {{> TextPost}}
+      {{/if}}
+      </li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="TextPost">
+  {{post.from.name}}: {{$or post.story post.message}} 
+</template>
