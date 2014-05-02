@@ -1,6 +1,6 @@
 <template name="Partiuform2">
   {{#each $.Session.get 'friends'}}
-    1
-    {{ name }}
+    <input type="checkbox" name="friend" value="{{ id }}">{{ name }}<br>
   {{/each}}
+  <a id='step2Submit' class='btn btn-primary'>With Friends</a>
 </template>
