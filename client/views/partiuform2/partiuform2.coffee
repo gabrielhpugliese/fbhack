@@ -1,6 +1,11 @@
-Template.Partiuform2.events {}
-  
-Template.Partiuform2.helpers {}
+Template.Partiuform2.events {
+  #'click'
+}
+
+Template.Partiuform2.helpers {
+  largeImage: (id) ->
+    "http://graph.facebook.com/"+id+"/picture?type=large"
+}
 
 Template.Partiuform2.created = ->
 

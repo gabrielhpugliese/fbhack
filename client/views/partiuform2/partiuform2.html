@@ -1,6 +1,11 @@
 <template name="Partiuform2">
   {{#each $.Session.get 'friends'}}
-    <input type="checkbox" name="friend" value="{{ id }}">{{ name }}<br>
+    <input type="checkbox" name="friend" value="{{ id }}" id="{{ id }}"/>
+
+    <label for='{{ id }}'>
+      <img src='{{ largeImage id }}' class="friend_image"/>
+      {{name}}
+    </label>
   {{/each}}
   <a id='step2Submit' class='btn btn-primary'>With Friends</a>
 </template>
