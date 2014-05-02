@@ -2,7 +2,6 @@ queryFB = (url, verb, cb) ->
   HTTP[verb] url, (err, res) ->
     cb err, res
 
-<<<<<<< HEAD
 Meteor.setInterval ->
   Meteor.users.find({}, {fields: {_id: 1, services: 1}}).forEach (doc) ->
     party = Parties.findOne ownerId: doc._id, status: 'active'
@@ -18,10 +17,3 @@ Meteor.setInterval ->
           return
         Posts.insert partyId: party._id, post: post
 , 5*1000
-=======
-#Meteor.setInterval ->
-#  Meteor.users.find().forEach (doc) ->
-#    url = 'https://graph.facebook.com/v2.0/me?access_token=' + doc.services.facebook.accessToken
-#    console.log getFB(url).result.content
-#, 5*1000
->>>>>>> fb
