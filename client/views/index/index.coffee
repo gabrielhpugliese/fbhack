@@ -3,14 +3,17 @@
 ###
 Template.Index.events {}
 ###
-Example: 
+Example:
  'click .selector': (e, tmpl) ->
-### 
+###
 
 
 Template.Index.helpers
   stepGreater: (step) ->
-    Session.get("step") >= step
+    currentStep = Router.current().params.step
+    if not currentStep
+      currentStep = 1
+    currentStep >= step
 
 Template.Index.created = ->
 

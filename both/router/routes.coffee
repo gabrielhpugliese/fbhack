@@ -1,4 +1,4 @@
-### 
+###
 Client and Server Routes
 ###
 Router.configure
@@ -10,6 +10,8 @@ Router.configure
 
 Router.map ->
   this.route 'redirect', path: '/', template: "Index", controller: "RedirectController"
-  this.route 'index', path: '/partiu/:step'
+  this.route 'index', path: '/partiu'
+  this.route 'step', path: '/partiu/:title/:step', template: "Index"
+  
   this.route 'party', path: '/party/:_id'
 # end map
