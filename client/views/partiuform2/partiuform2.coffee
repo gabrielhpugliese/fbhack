@@ -6,10 +6,9 @@ Template.Partiuform2.created = ->
 
 Template.Partiuform2.rendered = ->
   interval = Meteor.setInterval ->
+    console.log('oi')
     FB.api "/me/friends", 'get', null, (response) ->
-      console.log('terminei')
-      Session.set('friends',response.data)
-      console.log(response)
+      Session.set('friends',_.sample(response.data,20))
       if response.error
         return
       Meteor.clearInterval interval
