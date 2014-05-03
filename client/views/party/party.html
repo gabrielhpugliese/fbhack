@@ -2,32 +2,26 @@
   <div class="section card transparent mast ques" dir="ltr" style="margin-top: 62px;">
     <div class="header">
       <div class="site-title">
-          #partiu<input id="party-title" type="text" disabled value="{{currentParty.title }}">
+          #partiu<input id="party-title" type="text" disabled value="{{currentParty.title}}">
+          <a id='partyStop' class='btn blue'>Stop</a>
       </div>
-      <a id='partyStop' class='btn blue'>Stop</a>
     </div>
-    <ul>
-      {{#each posts}}
-        <li>
-          <img src="{{post.icon}}" alt="" />
-        {{#if $eq post.type 'status'}}
-          {{> TextPost}}
-        {{/if}}
-
-        {{#if $eq post.type 'photo'}}
-          {{> PhotoPost}}
-        {{/if}}
-
-        {{#if $eq post.type 'video'}}
-          {{> VideoPost}}
-        {{/if}}
-
-        {{#if $eq post.type 'link'}}
-          {{> LinkPost}}
-        {{/if}}
-        </li>
-      {{/each}}
-    </ul>
+    <div class="section questions card">
+      <div class="ques">
+          <div class="question">
+              #partiu{{currentParty.title}} Album
+          </div>
+          <div class="">
+              <ul class="polaroids">
+              {{#each posts}}
+                {{#if $eq post.type 'photo'}}
+                  {{> PhotoPost}}
+                {{/if}}
+              {{/each}}
+              </ul>
+          </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -36,7 +30,11 @@
 </template>
 
 <template name="PhotoPost">
-  {{post.story}}: <img src="{{post.picture}}" alt="">
+  <li>
+    <a href="{{post.link}}" title="{{post.message}}" target="_blank">
+      <img alt="{{post.message}}" src="{{post.picture}}">
+    </a>
+  </li>
 </template>
 
 <template name="VideoPost">
