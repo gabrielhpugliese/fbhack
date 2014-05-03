@@ -35,6 +35,21 @@ Template.Partiuform1.events {
         friend.visible = 'hide'
       return friend
     Session.set 'friends', friends
+
+  'click #users .user': (e, t) ->
+    console.log 'aki'
+    e.preventDefault()
+    $target = t.$(e.target)
+    if not $target.hasClass 'user'
+      $target = $target.closest '.user'
+    $target.toggleClass 'selected'
+
+###
+  $("#users").on "click", ".user_group", (e) ->
+    e.preventDefault()
+    $(this).toggleClass "selected"
+    return
+###
 }
 
 Template.Partiuform1.helpers {
@@ -47,8 +62,9 @@ Template.Partiuform1.groupButtons = ->
 
 Template.Partiuform1.created = ->
 
-Template.Partiuform1.rendered = =>
-  @fbAsyncInit()
+Template.Partiuform1.rendered = ->
+  this.$("#party-title").focus()
+  window.fbAsyncInit()
   FB.Event.subscribe 'auth.statusChange', (res) ->
     console.log('oi')
     if res.status == 'connected'
@@ -82,15 +98,3 @@ Deps.autorun ->
       console.log(item.eid)
       { eid: item.eid }
     Session.set 'groupList', x
-
-  $("#party-title").focus()
-
-  $("#users").on "click", ".user_group", (e) ->
-    e.preventDefault()
-    $(this).toggleClass "selected"
-    return
-
-  $("#users").on "click", ".user", (e) ->
-    e.preventDefault()
-    $(this).toggleClass "selected"
-    return
