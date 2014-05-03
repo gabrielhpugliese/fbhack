@@ -20,11 +20,7 @@
           </div>
 
           <div class="nav-tab">
-            <a href="{{pathFor 'past.parties'}}">Past Parties</a>
-          </div>
-
-          <div class="nav-tab">
-            <a href="https://github.com/gabrielhpugliese/fbhack" target="_blank">GitHub Repo</a>
+            <a href="{{pathFor 'past.parties'}}">Fotos passadas</a>
           </div>
 
           <div class="like">
@@ -45,14 +41,13 @@
         </div>
         {{#if currentUser}}
         <div class="auth-title" style="border-left: 1px solid; padding-left: 10px;">
-          <a href="{{pathFor 'past.parties'}}" style="font-size: 20px;">Fotos passadas</a>
         </div>
         {{/if}}
 
         <div class="auth-right">
           <div class="auth-login">
             {{> loginButtons}}
-            <!-- 
+            <!--
             <input id="fb-name" type="hidden" value="">
 
             <div class="login-label">
