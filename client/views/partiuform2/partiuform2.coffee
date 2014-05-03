@@ -39,7 +39,10 @@ Deps.autorun ->
   FB.api "/me/friends", 'get', null, (response) ->
     Session.set('friends',_.sample(response.data,20))
     
-  title = Parties.current().title
+  party = Parties.current()
+  if not party
+    return
+  title = party.title
   FB.api {
     method: 'fql.query',
     query: "select name, start_time, eid FROM event where contains('" + name + "')
