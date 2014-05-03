@@ -2,7 +2,15 @@ Template.Partiuform2.events {
   'click #step2Submit': (e,t)->
     friends = _.map($('#friends-selector > input[name=friend]:checked'), (check) -> return $(check).val())
     party = Parties.current()
-    Parties.update({_id: party._id},{$set: {friends: friends}})
+    Parties.update({_id: party._id},{$set: {friends: friends, status: 'active'}}, (err, res) ->
+      if err
+        console.error 'deu erro', err
+        return
+
+      Meteor.call('post', (err, res) ->
+        console.log err, res
+      )
+    )
 }
 
 Template.Partiuform2.groupButtons = ->

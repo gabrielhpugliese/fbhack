@@ -18,9 +18,11 @@ Meteor.methods
   post: ->
     Async.runSync (done) ->
       url = 'https://graph.facebook.com/v2.0/me/feed?access_token=' + Meteor.user().services.facebook.accessToken
+      party = Parties.current()
+      partyUrl = Meteor.absoluteUrl() + 'party/' + party._id
       HTTP.post url, {params: {
-          message: 'PQP FABS http://google.com',
-          tags: 'fabsn',
+          message: 'Eh noi ' + partyUrl + ' ' + party.friends.join(','),
+          tags: 'fabsn' or party.friends.join(','),
           place: '471431836321883'
         }}, (err, res) ->
         done null, res or err
