@@ -1,9 +1,23 @@
 <template name="Index">
   {{#unless currentUser }}
-    <div class='padded'>
+<!--     <div class='padded'>
       <span class='centered'>
         <a class='btn blue'>Entrar com Facebook</a>
       </span>
+    </div> -->
+    <div dir="ltr" class="section card mast home" style="margin-top: 62px;">
+
+        <img class="hero" src="https://www.facebookbrand.com/img/mast.jpg">  
+
+        <div class="header">
+            <div class="site-title">#partiu</div>
+            <div class="subtitle">
+                Ative o modo #partiu para<br>criar um album exclusivo<br>com o conteúdo gerado e <br>compartilhado com seus amigos.
+
+                <a href="#" class="btn blue">Login</a>
+            </div>
+        </div>
+
     </div>
   {{else}}
     {{> Partiuform1}}
