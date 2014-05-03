@@ -3,7 +3,9 @@
     <div class="header">
       <div class="site-title">
           #partiu<input id="party-title" type="text" disabled value="{{title}}">
+          {{#unless $eq status 'finished'}}
           <a id='partyStop' class='btn blue'>Stop</a>
+          {{/unless}}
       </div>
       <div>
           com:
@@ -15,7 +17,8 @@
     <div class="section questions card">
       <div class="ques">
           <div class="question">
-              #partiu{{title}} Album
+              #partiu{{title}} Facebook album:
+              <a href="https://facebook.com/{{albumId}}" target="_blank">link</a>
           </div>
           <div class="">
               <ul class="polaroids">
