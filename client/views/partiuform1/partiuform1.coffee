@@ -15,6 +15,11 @@ Template.Partiuform1.events {
         console.log err, res
       )
     )
+
+    Router.go('party',party._id)
+
+  'click #partyStop': (e,t) ->
+    Parties.remove({_id: Parties.current()._id})
 }
 
 Template.Partiuform1.helpers {
