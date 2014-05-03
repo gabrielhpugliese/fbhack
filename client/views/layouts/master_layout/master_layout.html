@@ -43,9 +43,11 @@
         <div class="auth-title">
           <a href="./"><img alt="Facebook" src="/assets/logo.icon.png"> #partiu</a>
         </div>
+        {{#if currentUser}}
         <div class="auth-title" style="border-left: 1px solid; padding-left: 10px;">
           <a href="{{pathFor 'past.parties'}}" style="font-size: 20px;">Fotos passadas</a>
         </div>
+        {{/if}}
 
         <div class="auth-right">
           <div class="auth-login">
