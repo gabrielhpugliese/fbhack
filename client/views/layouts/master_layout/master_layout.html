@@ -18,10 +18,11 @@
           <div class="nav-tab selected">
             <a href="/">Home</a>
           </div>
-
+          {{#if currentUser }}
           <div class="nav-tab">
             <a href="{{pathFor 'past.parties'}}">Fotos passadas</a>
           </div>
+          {{/if}}
 
           <div class="like">
             <div class="fb-like fb_iframe_widget" data-href="https://www.facebookbrand.com" data-layout="button_count" data-send="false" data-show-faces="false" data-width="90">
