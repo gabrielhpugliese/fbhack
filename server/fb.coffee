@@ -4,12 +4,14 @@ Meteor.setInterval ->
     if not party
       return
     party.friends.push doc.services.facebook.id
+    console.log party.friends
     _.each party.friends, (friendId) ->
       url = 'https://graph.facebook.com/v1.0/'+friendId+'/feed?access_token=' + doc.services.facebook.accessToken
       HTTP.get url, (err, res) ->
         if err
           console.log err
           return
+        #console.log res.data.data[0]
         _.each res.data.data, (post) ->
           havePost = Posts.findOne partyId: party._id, 'post.id': post.id
           if havePost
