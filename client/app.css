@@ -201,7 +201,8 @@ form input, form select, form textarea {
   display: none;
 }
 
-#login-buttons-logout {
+#login-buttons-logout,
+#login-buttons-facebook {
   display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0;
@@ -222,7 +223,7 @@ form input, form select, form textarea {
   border-radius: 4px;
   margin-top: -4px; 
   height: 20px;
-  background-color: #5890FF;
+  background-color: #979797;
   color: #FFF;
 }
 
