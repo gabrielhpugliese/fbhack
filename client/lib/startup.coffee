@@ -10,7 +10,7 @@ Session.set 'fbinit', false
 @fbAsyncInit = ->
   console.log('fb:init 1')
   FB.init
-    appId      : '664131753652082',
+    appId      : '528776277231040',
     status     : true,
     xfbml      : true,
     version    : 'v1.0'
