@@ -4,17 +4,6 @@
       {{> loginButtons}}
     </div>
   {{else}}
-    {{#if stepGreater '1' }}
-      {{> Partiuform1}}
-      {{> Partiuform2}}
-    {{/if}}
-
-    {{#if stepGreater '3' }}
-      {{> Partiuform3}}
-    {{/if}}
-
-    {{#if stepGreater '4' }}
-      {{> Partiuform4}}
-    {{/if}}
+    {{> Partiuform1}}
   {{/unless}}
 </template>
