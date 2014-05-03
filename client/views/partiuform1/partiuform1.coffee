@@ -23,22 +23,25 @@ Template.Partiuform1.events {
 
   'keyup .typeahead': (e, t) ->
     keyword = t.$(e.target).val()
-    friends = Session.get 'friends'
     regex = new RegExp(keyword, 'i')
 
+    allFriends = Session.get 'allFriends'
+    friends = Session.get 'friends'
+    initials = Session.get 'initials'
     firsts = []
     lasts = []
-    initials = Session.get 'initials'
 
     if keyword.length == 0
-      _.each friends, (friend) ->
+      _.each allFriends, (friend) ->
         if friend.selected
+          friend.visible = ''
           firsts.push friend
-
-      lasts = _.difference(initials,firsts)
+        else
+          lasts.push friend
     else
-      _.each friends, (friend) ->
+      _.each allFriends, (friend) ->
         if friend.selected
+          friend.visible = ''
           firsts.push friend
         else
           if keyword.length > 2
@@ -58,16 +61,16 @@ Template.Partiuform1.events {
 
     $target.toggleClass 'selected'
 
-    friends = Session.get 'friends'
+    allFriends = Session.get 'allFriends'
 
-    friends = _.map friends, (f) =>
+    friends = _.map allFriends, (f) =>
       if this.id == f.id
         console.log(this)
         console.log(this.id)
         f.selected = $target.hasClass 'selected'
       return f
 
-    Session.set('friends',friends)
+    Session.set('allFriends',friends)
 
 ###
   $("#users").on "click", ".user_group", (e) ->
@@ -110,12 +113,13 @@ Deps.autorun ->
       d.visible = 'hide'
       return d
 
-    initial = _.sample(data,21)
-    _.each initial, (d) ->
+    initials = _.sample(data,21)
+    _.each initials, (d) ->
       d.visible = ''
 
-    Session.set('initials', initial)
-    Session.set('friends', data)
+    Session.set('initials', initials)
+    Session.set('friends', initials)
+    Session.set('allFriends', data)
 
   party = Parties.current()
   if not party
