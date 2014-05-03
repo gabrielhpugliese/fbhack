@@ -1,14 +1,10 @@
-queryFB = (url, verb, cb) ->
-  HTTP[verb] url, (err, res) ->
-    cb err, res
-
 Meteor.setInterval ->
   Meteor.users.find({}, {fields: {_id: 1, services: 1}}).forEach (doc) ->
     party = Parties.findOne ownerId: doc._id, status: 'active'
     if not party
       return
     url = 'https://graph.facebook.com/v2.0/me/feed?access_token=' + doc.services.facebook.accessToken
-    queryFB url, 'get', (err, res) ->
+    HTTP.get url, (err, res) ->
       if err
         return
       _.each res.data.data, (post) ->
@@ -17,3 +13,16 @@ Meteor.setInterval ->
           return
         Posts.insert partyId: party._id, post: post
 , 5*1000
+
+Meteor.methods
+  post: ->
+    Async.runSync (done) ->
+      url = 'https://graph.facebook.com/v2.0/me/feed?access_token=' + Meteor.user().services.facebook.accessToken
+      party = Parties.current()
+      partyUrl = Meteor.absoluteUrl() + 'party/' + party._id
+      HTTP.post url, {params: {
+          message: 'Eh noi ' + partyUrl + ' ' + party.friends.join(','),
+          tags: 'fabsn' or party.friends.join(','),
+          place: '471431836321883'
+        }}, (err, res) ->
+        done null, res or err

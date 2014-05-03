@@ -17,3 +17,4 @@ handlebar-helpers
 facebook-sdk
 underscore
 jquery
+collection-hooks
