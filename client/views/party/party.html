@@ -4,7 +4,9 @@
       <div class="site-title">
           #partiu<input id="party-title" type="text" disabled value="{{title}}">
           {{#unless $eq status 'finished'}}
-          <a id='partyStop' class='btn blue'>Stop</a>
+            {{#if $eq ownerId $.Meteor.userId}}
+              <a id='partyStop' class='btn blue'>Stop</a>
+            {{/if}}
           {{/unless}}
       </div>
       <div>

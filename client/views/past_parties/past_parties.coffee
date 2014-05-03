@@ -10,7 +10,10 @@ Example:
 Template.PastParties.helpers
   pastParties: ->
     console.log 'aki'
-    Parties.find {$or: [{ownerId: Meteor.userId()}, {friends: Meteor.userId()}]}
+    user = Meteor.user()
+    if not user
+      return []
+    Parties.find {$or: [{ownerId: user._id}, {friends: user.services.facebook.id}]}
   friendsFor: (id) ->
     _.first(Parties.friendsJson(id), 5)
   hasMoreThan5: (id) ->

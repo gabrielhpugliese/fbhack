@@ -1,11 +1,11 @@
 @Parties = new Meteor.Collection 'parties'
 
 Parties.current = ->
-  userId = Meteor.userId()
-  if not userId
+  user = Meteor.user()
+  if not user
     return
 
-  @findOne({$or: [ {ownerId: userId}, {friends: userId} ],status: 'active'},{sort: {createdAt: -1}})
+  @findOne({$or: [ {ownerId: user._id}, {friends: user.services.facebook.id} ],status: 'active'},{sort: {createdAt: -1}})
 
 Parties.friendsJson = (partyId) ->
   party = @findOne(partyId)
