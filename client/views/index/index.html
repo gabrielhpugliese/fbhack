@@ -1,7 +1,9 @@
 <template name="Index">
   {{#unless currentUser }}
     <div class='padded'>
-      {{> loginButtons}}
+      <span class='centered'>
+        <a class='btn blue'>Entrar com Facebook</a>
+      </span>
     </div>
   {{else}}
     {{> Partiuform1}}

@@ -1,6 +1,6 @@
 Template.Partiuform1.events {
   'click #partyStart': (e,t) ->
-    friends = _.map($('#users .selected'), (check) -> return $(check).find('input[name=user_id]').val())
+    friends = _.map Template.Partiuform1.selectedFriends(), (x) -> x.id
 
     party =
       title: $('#party-title').val()
@@ -80,12 +80,22 @@ Template.Partiuform1.events {
 ###
 }
 
+Template.Partiuform1.selectedFriends = ->
+    allFriends = Session.get 'allFriends'
+    _.filter allFriends, (f) =>
+      f.selected
+
 Template.Partiuform1.helpers {
   largeImage: (id) ->
     "http://graph.facebook.com/"+id+"/picture?type=large"
+
+
   selectedClass: (selected) ->
     if selected
       'selected'
+
+  addedFriends: ->
+    Template.Partiuform1.selectedFriends().length
 }
 
 Template.Partiuform1.groupButtons = ->

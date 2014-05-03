@@ -1,0 +1,20 @@
+<template name="PastParties">
+  <div class="section card transparent mast ques" dir="ltr" style="margin-top: 62px;">
+      <div class="header">
+          <div class="site-title">
+            Albuns passados
+          </div>
+      </div>
+      <ul>
+      {{#each pastParties}}
+      <li>
+        <a href="
+        {{pathFor 'party'}} 
+        ">
+        {{title}}
+      </a>  
+      </li>
+      {{/each}}
+      </ul>
+  </div>
+</template>

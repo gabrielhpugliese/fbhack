@@ -5,6 +5,12 @@
           #partiu<input id="party-title" type="text" disabled value="{{currentParty.title}}">
           <a id='partyStop' class='btn blue'>Stop</a>
       </div>
+      <div>
+          com:
+          {{#each friendsJson }}
+            <img src='{{ smallImage id}}'/>
+          {{/each}}
+      </div>
     </div>
     <div class="section questions card">
       <div class="ques">

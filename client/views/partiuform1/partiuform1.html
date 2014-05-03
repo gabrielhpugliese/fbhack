@@ -3,30 +3,26 @@
     <div class="section card transparent mast ques" dir="ltr">
         <div class="header">
             <div class="site-title">
+                <a id='partyStart' class='btn blue party-action'>partir</a>
                 #partiu<input id="party-title" type="text">
             </div>
         </div>
     </div>
 
-    {{#each groupButtons}}
-      {{ eid }}
-    {{/each}}
-
-
-
       <div class="section questions card">
           <div class="ques">
               <div class="question">
-                  Choose your friends
+                  <input class="typeahead" type="text">
+                  <span class="typehead-title" >Escolha seus amigos:</span>
+                  {{ addedFriends }} amigos
               </div>
 
               <div class="answer">
-                  <p id="user_selector">
+<!--                   <p id="user_selector">
                       <a class="btn sm blue link user_group" href="#">friends from Facebook Hackathon</a>
                       <a class="btn sm blue link user_group" href="#">select bla blablabla</a>
                       <a class="btn sm blue link user_group" href="#">huaheuh3u3hu3</a>
-                  </p>
-                  <input class="typeahead" type="text">
+                  </p> -->
                   <div id="users">
                   {{#each $.Session.get 'friends'}}
 
@@ -40,9 +36,6 @@
                   {{/each}}
                   </div>
               </div>
-          </div>
-          <div class='party-actions'>
-              <a id='partyStart' class='btn blue'>Start</a>
           </div>
       </div>
     <div class='party-actions'>

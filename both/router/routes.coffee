@@ -14,4 +14,5 @@ Router.map ->
   this.route 'step', path: '/partiu/:title/:step', template: "Index"
   
   this.route 'party', path: '/party/:_id'
+  this.route 'past.parties', path: '/past-parties'
 # end map
