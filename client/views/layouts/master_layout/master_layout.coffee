@@ -23,3 +23,6 @@ Template.MasterLayout.created = ->
 Template.MasterLayout.rendered = ->
 
 Template.MasterLayout.destroyed = ->
+
+Template.MasterLayout.likeConfig =
+  share: 'false'
