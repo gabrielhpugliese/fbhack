@@ -12,7 +12,7 @@ Router.map ->
   this.route 'redirect', path: '/', template: "Index", controller: "RedirectController"
   this.route 'index', path: '/partiu'
   this.route 'step', path: '/partiu/:title/:step', template: "Index"
-  
-  this.route 'party', path: '/party/:_id'
-  this.route 'past.parties', path: '/past-parties'
+
+  this.route 'party', path: '/partida/:_id'
+  this.route 'past.parties', path: '/partidas'
 # end map
