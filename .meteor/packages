@@ -14,7 +14,6 @@ accounts-facebook
 npm
 http
 handlebar-helpers
-facebook-sdk
 underscore
 jquery
 collection-hooks

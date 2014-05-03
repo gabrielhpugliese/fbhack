@@ -6,7 +6,6 @@
       "iron-router": {},
       "npm": {},
       "handlebar-helpers": {},
-      "facebook-sdk": {},
       "collection-hooks": {},
       "moment": {}
     },
@@ -30,11 +29,6 @@
         "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
         "tag": "v0.1.1",
         "commit": "0b407ab65e7c1ebd53d71aef0de2e2c1d21a597c"
-      },
-      "facebook-sdk": {
-        "git": "https://github.com/hugesuccess/facebook-sdk.git",
-        "tag": "v0.0.44",
-        "commit": "cb71b860085ec6453b61644b31f6351e7de2c1b0"
       },
       "collection-hooks": {
         "git": "https://github.com/matb33/meteor-collection-hooks.git",

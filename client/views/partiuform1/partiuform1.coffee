@@ -65,8 +65,6 @@ Template.Partiuform1.events {
 
     friends = _.map allFriends, (f) =>
       if this.id == f.id
-        console.log(this)
-        console.log(this.id)
         f.selected = $target.hasClass 'selected'
       return f
 
@@ -105,49 +103,49 @@ Template.Partiuform1.created = ->
 
 Template.Partiuform1.rendered = ->
   this.$("#party-title").focus()
-  window.fbAsyncInit()
-  FB.Event.subscribe 'auth.statusChange', (res) ->
-    console.log('oi')
-    if res.status == 'connected'
-        Session.set('fbinit',true)
+  @run = Deps.autorun ->
+    unless Session.get('fbinit')
+      return
+
+    if Session.get 'initials'
+      return
+
+    console.log 'AKI************************'
+    console.log Session.get('fbinit'), '************************************'
+    FB.api "/me/friends", 'get', null, (response) ->
+      #Session.set('friends',_.sample(response.data,20))
+      data = _.map response.data, (d) ->
+        d.visible = 'hide'
+        return d
+
+      hackSample = _.map usersHackathon.data, (uid) -> uid.uid.toString()
+      dataIds = _.pluck data, 'id'
+      inter = _.intersection hackSample, dataIds
+      final = _.filter data, (d) -> d.id in inter
+      initials = _.sample(data, 21 - final.length)
+      initials = _.shuffle _.union initials, final
+      _.each initials, (d) ->
+        d.visible = ''
+      console.log '2AKI******************', response
+
+      Session.set('initials', initials)
+      Session.set('friends', initials)
+      Session.set('allFriends', data)
+
+    party = Parties.current()
+    if not party
+      return
+    title = party.title
+    FB.api {
+      method: 'fql.query',
+      query: "select name, start_time, eid FROM event where contains('" + title + "')
+      AND eid IN (SELECT eid FROM event_member WHERE eid in
+      (SELECT eid FROM event WHERE contains('" + title + "')) AND uid = me() AND rsvp_status = 'attending')"
+    }, (data) ->
+      x = _.map data, (item) ->
+        { eid: item.eid }
+      Session.set 'groupList', x
 
 Template.Partiuform1.destroyed = ->
+  @run.stop()
 
-Deps.autorun ->
-  unless Session.get('fbinit')
-    return
-
-  FB.api "/me/friends", 'get', null, (response) ->
-    #Session.set('friends',_.sample(response.data,20))
-    data = _.map response.data, (d) ->
-      d.visible = 'hide'
-      return d
-
-    hackSample = _.map usersHackathon.data, (uid) -> uid.uid.toString()
-    dataIds = _.pluck data, 'id'
-    inter = _.intersection hackSample, dataIds
-    final = _.filter data, (d) -> d.id in inter
-    initials = _.sample(data, 21 - final.length)
-    initials = _.shuffle _.union initials, final
-    _.each initials, (d) ->
-      d.visible = ''
-
-    Session.set('initials', initials)
-    Session.set('friends', initials)
-    Session.set('allFriends', data)
-
-  party = Parties.current()
-  if not party
-    return
-  title = party.title
-  FB.api {
-    method: 'fql.query',
-    query: "select name, start_time, eid FROM event where contains('" + title + "')
-    AND eid IN (SELECT eid FROM event_member WHERE eid in
-    (SELECT eid FROM event WHERE contains('" + title + "')) AND uid = me() AND rsvp_status = 'attending')"
-  }, (data) ->
-    console.log(data)
-    x = _.map data, (item) ->
-      console.log(item.eid)
-      { eid: item.eid }
-    Session.set 'groupList', x

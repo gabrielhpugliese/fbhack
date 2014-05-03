@@ -4,7 +4,6 @@
     "iron-router": {},
     "npm": {},
     "handlebar-helpers": {},
-    "facebook-sdk": {},
     "collection-hooks": {},
     "moment": {}
   }

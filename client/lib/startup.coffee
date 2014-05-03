@@ -5,6 +5,8 @@ Meteor.startup ->
 
   console.log('bozo')
 
+Session.set 'fbinit', false
+
 @fbAsyncInit = ->
   console.log('fb:init 1')
   FB.init
@@ -12,3 +14,6 @@ Meteor.startup ->
     status     : true,
     xfbml      : true,
     version    : 'v1.0'
+  FB.Event.subscribe 'auth.statusChange', (res) ->
+    if res.status == 'connected'
+      Session.set('fbinit',true)
