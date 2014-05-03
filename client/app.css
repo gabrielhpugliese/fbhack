@@ -242,3 +242,7 @@ form input, form select, form textarea {
 .login-display-name {
   display: none;
 }
+
+.nav {
+	display: block !important;
+}

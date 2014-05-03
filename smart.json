@@ -5,6 +5,7 @@
     "npm": {},
     "handlebar-helpers": {},
     "collection-hooks": {},
-    "moment": {}
+    "moment": {},
+    "bootstrap-3": {}
   }
 }
