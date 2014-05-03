@@ -1,7 +1,10 @@
 ###
  Party: Event Handlers and Helpers
 ###
-Template.Party.events {}
+Template.Party.events
+  'click #partyStop': (e,t) ->
+    Parties.update({_id: Parties.current()._id}, {$set: {status: 'finished'}})
+    Router.go('index')
 ###
 Example: 
  'click .selector': (e, tmpl) ->

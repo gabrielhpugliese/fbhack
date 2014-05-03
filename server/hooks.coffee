@@ -14,7 +14,7 @@ Parties.after.insert (userId, doc) ->
       HTTP.post url, {params: {
           name: '#partiu' + party.title
         }}, (err, res) ->
-          Parties.update {_id: doc._id, albumId: res.id}
+          Parties.update {_id: doc._id},{$set: {albumId: res.data.id}}
     ).run()
 
 Parties.after.update (userId, doc) ->

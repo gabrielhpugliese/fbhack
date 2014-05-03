@@ -19,7 +19,7 @@ Template.Partiuform1.events {
     Router.go('party',{_id: party._id})
 
   'click #partyStop': (e,t) ->
-    Parties.remove({_id: Parties.current()._id})
+    Parties.update({_id: Parties.current()._id}, {$set: {status: 'finished'}})
 
   'keyup .typeahead': (e, t) ->
     keyword = t.$(e.target).val()

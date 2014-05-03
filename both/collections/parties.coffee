@@ -1,4 +1,4 @@
 @Parties = new Meteor.Collection 'parties'
 
 Parties.current = ->
-  @findOne({},{sort: {createdAt: -1}})
+  @findOne({status: 'active'},{sort: {createdAt: -1}})
