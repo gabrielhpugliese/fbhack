@@ -1,6 +1,8 @@
 Template.Partiuform1.events {
   'click #partyStart': (e,t) ->
-    friends = _.map($('#friends-selector > input[name=friend]:checked'), (check) -> return $(check).val())
+    friends = _.map($('#users .selected'), (check) -> return $(check).find('input[name=user_id]').val())
+    console.log "friends"
+    console.log friends    
 
     party =
       title: $('#party-title').val()
@@ -60,3 +62,15 @@ Deps.autorun ->
       console.log(item.eid)
       { eid: item.eid }
     Session.set 'groupList', x
+
+  $("#party-title").focus()
+
+  $("#users").on "click", ".user_group", (e) ->
+    e.preventDefault()
+    $(this).toggleClass "selected"
+    return
+
+  $("#users").on "click", ".user", (e) ->
+    e.preventDefault()
+    $(this).toggleClass "selected"
+    return

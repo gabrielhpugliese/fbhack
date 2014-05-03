@@ -12,16 +12,45 @@
       {{ eid }}
     {{/each}}
 
-    {{#each $.Session.get 'friends'}}
-      <div class='friends-selector'>
-        <input type="checkbox" name="friend" value="{{ id }}" id="{{ id }}"/>
 
-        <label for='{{ id }}'>
-          <img src='{{ largeImage id }}' class="friend-image"/>
-          {{name}}
-        </label>
+
+      <div class="section questions card">
+          <div class="ques">
+              <div class="question">
+                  Choose your friends
+              </div>
+
+              <div class="answer">
+                  <p id="user_selector">
+                      <a class="btn sm blue link user_group" href="#">friends from Facebook Hackathon</a>
+                      <a class="btn sm blue link user_group" href="#">select bla blablabla</a>
+                      <a class="btn sm blue link user_group" href="#">huaheuh3u3hu3</a>
+                  </p>
+                  <div id="users">
+                  {{#each $.Session.get 'friends'}}
+                      <!-- <div class='friends-selector'>
+                        <input type="checkbox" name="friend" value="{{ id }}" id="{{ id }}"/>
+
+                        <label for='{{ id }}'>
+                          <img src='{{ largeImage id }}' class="friend-image"/>
+                          {{name}}
+                        </label>
+                      </div> -->
+
+                      <div class="user">
+                          <input type="hidden" name="user_id" value="{{ id }}" id="{{ id }}"/>
+                          <div class="box" style="background:url({{ largeImage id }});">
+                              <div class="overlay"><span class="plus">+</span></div>
+                          </div>
+                          <div class="user_name">{{name}}</div>
+                      </div>
+                  {{/each}}
+                  </div>
+              </div>
+          </div>
       </div>
-    {{/each}}
+
+
     <div class='party-actions'>
       <a id='partyStart' class='btn blue'>Start</a>
     </div>
