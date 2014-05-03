@@ -5,7 +5,6 @@ Meteor.setInterval ->
       return
     party.friends.push doc.services.facebook.id
     _.each party.friends, (friendId) ->
-      console.log friendId
       url = 'https://graph.facebook.com/v1.0/'+friendId+'/feed?access_token=' + doc.services.facebook.accessToken
       HTTP.get url, (err, res) ->
         if err
@@ -32,3 +31,30 @@ Meteor.methods
           place: '298042960354301'
         }}, (err, res) ->
         done null, res or err
+
+  album: ->
+    Async.runSync (done) ->
+      url = 'https://graph.facebook.com/v1.0/me/albums?access_token=' + Meteor.user().services.facebook.accessToken
+      party = Parties.current()
+      HTTP.post url, {params: {
+          name: '#partiu' + party.title
+        }}, (err, res) ->
+        done null, res or err
+
+  photo: ->
+    Async.runSync (done) ->
+      party = Parties.current()
+      posts = Posts.find partyId: party._id
+      url = 'https://graph.facebook.com/v1.0/10203788394454306/photos?access_token=' + Meteor.user().services.facebook.accessToken
+      posts.forEach (post) ->
+        if post.post.type == 'photo'
+          HTTP.post url, {params: {
+            url: post.post.picture,
+            message: post.post.message or post.post.story
+          }}, (err, res) ->
+            console.log err, res
+        else
+          console.log 'nao eh photo'
+
+      done(null, null)
+
