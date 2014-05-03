@@ -13,3 +13,7 @@
 .party-actions{
   float:right;
 }
+
+.hidden-checkbox{
+  display:none;
+}

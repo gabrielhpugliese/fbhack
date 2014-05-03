@@ -47,7 +47,7 @@ Deps.autorun ->
 
   FB.api "/me/friends", 'get', null, (response) ->
     #Session.set('friends',_.sample(response.data,20))
-    Session.set('friends',response.data,20)
+    Session.set('friends',response.data)
 
   party = Parties.current()
   if not party
