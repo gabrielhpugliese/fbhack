@@ -1,6 +1,6 @@
 <template name="Partiuform1">
   {{#unless currentParty }}
-    <div class="section card2 transparent mast ques" dir="ltr">
+    <div class="section card transparent mast ques" dir="ltr">
         <div class="header">
             <div class="site-title">
                 <a id='partyStart' class='btn blue party-action'>partir</a>
@@ -13,7 +13,8 @@
           <div class="ques">
               <div class="question">
                   <input class="typeahead" type="text">
-                  <span class="typehead-title" >Escolha seus amigos:</span>
+                  <span class="typehead-title" >Escolha amigos:</span>
+                  <div style="clear:both"></div>
                   {{ addedFriends }} amigos
               </div>
 
