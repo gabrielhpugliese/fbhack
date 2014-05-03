@@ -1,7 +1,7 @@
 Meteor.startup ->
-  console.log('fb: init step 1')
+  console.log('bozo')
   @fbAsyncInit = ->
-    console.log('fb: init step 2')
+    console.log('fb:init 1')
     FB.init
       appId      : '664131753652082',
       status     : true,
