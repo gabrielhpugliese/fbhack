@@ -23,7 +23,8 @@ Template.Partiuform2.helpers {
 
 Template.Partiuform2.created = ->
 
-Template.Partiuform2.rendered = ->
+Template.Partiuform2.rendered = =>
+  @fbAsyncInit()
   FB.Event.subscribe 'auth.statusChange', (res) ->
     console.log('oi')
     if res.status == 'connected'
@@ -35,13 +36,11 @@ Deps.autorun ->
   unless Session.get('fbinit')
     return
 
-  interval = Meteor.setInterval ->
-    FB.api "/me/friends", 'get', null, (response) ->
-      Session.set('friends',_.sample(response.data,20))
-      if response.error
-        return
-      Meteor.clearInterval interval
-  , 1000
+  FB.api "/me/friends", 'get', null, (response) ->
+    Session.set('friends',_.sample(response.data,20))
+    if response.error
+      return
+    Meteor.clearInterval interval
 
   name = Parties.current().title
   FB.api {
