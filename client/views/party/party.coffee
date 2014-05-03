@@ -6,9 +6,9 @@ Template.Party.events
     Parties.update({_id: Parties.current()._id}, {$set: {status: 'finished'}})
     Router.go('index')
 ###
-Example: 
+Example:
  'click .selector': (e, tmpl) ->
-### 
+###
 
 
 Template.Party.helpers
@@ -19,8 +19,10 @@ Template.Party.helpers
         { 'post.message': $exists: 1},
         { 'post.picture': $exists: 1}
       ]
+  friendsJson: ->
+    Parties.friendsJson()
 ###
-Example: 
+Example:
  items: ->
    Items.find()
 ###
