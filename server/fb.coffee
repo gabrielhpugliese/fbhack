@@ -27,7 +27,7 @@ Meteor.methods
       party = Parties.current()
       partyUrl = Meteor.absoluteUrl() + 'party/' + party._id
       HTTP.post url, {params: {
-          message: '#partiu ' + party.title + ' ' + partyUrl
+          message: '#partiu' + party.title + ' ' + partyUrl
           tags: party.friends.join(','),
           place: '298042960354301'
         }}, (err, res) ->
