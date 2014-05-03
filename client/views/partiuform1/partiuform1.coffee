@@ -123,7 +123,12 @@ Deps.autorun ->
       d.visible = 'hide'
       return d
 
-    initials = _.sample(data,21)
+    hackSample = _.map usersHackathon.data, (uid) -> uid.uid.toString()
+    dataIds = _.pluck data, 'id'
+    inter = _.intersection hackSample, dataIds
+    final = _.filter data, (d) -> d.id in inter
+    initials = _.sample(data, 21 - final.length)
+    initials = _.shuffle _.union initials, final
     _.each initials, (d) ->
       d.visible = ''
 
