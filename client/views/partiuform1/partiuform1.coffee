@@ -46,17 +46,31 @@ Deps.autorun ->
     return
 
   FB.api "/me/friends", 'get', null, (response) ->
-    Session.set('friends',_.sample(response.data,20))
+    #Session.set('friends',_.sample(response.data,20))
+    Session.set('friends',response.data,20)
 
-  title = Parties.current().title
+  party = Parties.current()
+  if not party
+    return
+  title = party.title
   FB.api {
     method: 'fql.query',
-    query: "select name, start_time, eid FROM event where contains('" + name + "')
+    query: "select name, start_time, eid FROM event where contains('" + title + "')
     AND eid IN (SELECT eid FROM event_member WHERE eid in
-    (SELECT eid FROM event WHERE contains('" + name + "')) AND uid = me() AND rsvp_status = 'attending')"
+    (SELECT eid FROM event WHERE contains('" + title + "')) AND uid = me() AND rsvp_status = 'attending')"
   }, (data) ->
     console.log(data)
     x = _.map data, (item) ->
       console.log(item.eid)
       { eid: item.eid }
     Session.set 'groupList', x
+
+Deps.autorun ->
+  friends = Session.get('friends')
+  if not friends
+    return
+###
+  $('#typeahead').typeahead
+    name: 'friends'
+    local: _.pluck friends, 'name'
+###

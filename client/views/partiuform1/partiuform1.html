@@ -12,16 +12,7 @@
       {{ eid }}
     {{/each}}
 
-    {{#each $.Session.get 'friends'}}
-      <div class='friends-selector'>
-        <input type="checkbox" name="friend" value="{{ id }}" id="{{ id }}"/>
-
-        <label for='{{ id }}'>
-          <img src='{{ largeImage id }}' class="friend-image"/>
-          {{name}}
-        </label>
-      </div>
-    {{/each}}
+    <input id="typeahead" type="text" class="tw-typeahead"/>
     <div class='party-actions'>
       <a id='partyStart' class='btn blue'>Start</a>
     </div>
@@ -32,3 +23,4 @@
     <a id='partyStop' class='btn'>Stop</a> 
   {{/unless}}
 </template>
+
