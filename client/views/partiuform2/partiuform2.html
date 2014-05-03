@@ -14,7 +14,7 @@
     <a id='step2Submit' class='btn btn-primary'>With Friends</a>
   {{/if}}
   {{#each $.Session.get 'friends'}}
-    <div id='friends-selector'>
+    <div class='friends-selector'>
       <input type="checkbox" name="friend" value="{{ id }}" id="{{ id }}"/>
 
       <label for='{{ id }}'>
