@@ -9,6 +9,33 @@
 	margin-top:64px;
 }
 
+#party-title{
+	width: 40%;
+}
+
+.typeahead{
+	float:right;
+	margin-right: 14px;
+}
+
+.typehead-title{
+	height: 44px;
+	display: block;
+	font-size: 29px;
+	padding-top: 11px;
+}
+
+.party-action{
+	float:right;
+	margin-right: 14px;
+	margin-top: 1px;
+}
+
+.centered{
+	text-align: center;
+	margin: 0 auto;
+}
+
 [touch-action="none"]{ -ms-touch-action: none; touch-action: none; }[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }[touch-action="scroll"],[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }
 .tk-freight-sans-pro{font-family:"freight-sans-pro",sans-serif;}
 .fb_hidden{position:absolute;top:-10000px;z-index:10001}
