@@ -26,18 +26,11 @@
                       <a class="btn sm blue link user_group" href="#">select bla blablabla</a>
                       <a class="btn sm blue link user_group" href="#">huaheuh3u3hu3</a>
                   </p>
+                  <input class="typeahead" type="text">
                   <div id="users">
                   {{#each $.Session.get 'friends'}}
-                      <!-- <div class='friends-selector'>
-                        <input type="checkbox" name="friend" value="{{ id }}" id="{{ id }}"/>
 
-                        <label for='{{ id }}'>
-                          <img src='{{ largeImage id }}' class="friend-image"/>
-                          {{name}}
-                        </label>
-                      </div> -->
-
-                      <div class="user">
+                      <div class="user {{visible}}">
                           <input type="hidden" name="user_id" value="{{ id }}" id="{{ id }}"/>
                           <div class="box" style="background:url({{ largeImage id }});">
                               <div class="overlay"><span class="plus">+</span></div>

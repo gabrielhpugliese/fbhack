@@ -22,6 +22,19 @@ Template.Partiuform1.events {
 
   'click #partyStop': (e,t) ->
     Parties.remove({_id: Parties.current()._id})
+
+  'keyup .typeahead': (e, t) ->
+    keyword = t.$(e.target).val()
+    friends = Session.get 'friends'
+    regex = new RegExp(keyword, 'i')
+
+    friends = _.map friends, (friend) ->
+      if keyword.length > 2 and regex.test(friend.name)
+        friend.visible = ''
+      else
+        friend.visible = 'hide'
+      return friend
+    Session.set 'friends', friends
 }
 
 Template.Partiuform1.helpers {
@@ -49,7 +62,10 @@ Deps.autorun ->
 
   FB.api "/me/friends", 'get', null, (response) ->
     #Session.set('friends',_.sample(response.data,20))
-    Session.set('friends',response.data)
+    data = _.map response.data, (d) ->
+      d.visible = 'hide'
+      return d
+    Session.set('friends', data)
 
   party = Parties.current()
   if not party
@@ -78,13 +94,3 @@ Deps.autorun ->
     e.preventDefault()
     $(this).toggleClass "selected"
     return
-
-Deps.autorun ->
-  friends = Session.get('friends')
-  if not friends
-    return
-###
-  $('#typeahead').typeahead
-    name: 'friends'
-    local: _.pluck friends, 'name'
-###

@@ -172,3 +172,7 @@ form input, form select, form textarea {
 	color: #000000;
 }
 /* END: USER BUTTON OVERLAY */
+
+.hide {
+  display: none;
+}
