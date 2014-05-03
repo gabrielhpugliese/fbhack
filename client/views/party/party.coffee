@@ -20,7 +20,7 @@ Template.Party.helpers
         { 'post.picture': $exists: 1}
       ]
   friendsJson: ->
-    Parties.friendsJson()
+    Parties.friendsJson(Router.current().params._id)
 ###
 Example:
  items: ->

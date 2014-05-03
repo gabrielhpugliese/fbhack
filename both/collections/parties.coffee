@@ -3,6 +3,9 @@
 Parties.current = ->
   @findOne({status: 'active'},{sort: {createdAt: -1}})
 
-Parties.friendsJson = ->
-  _.map Parties.current().friends, (x) ->
+Parties.friendsJson = (partyId) ->
+  party = @findOne(partyId)
+  if not party
+    return
+  _.map party.friends, (x) ->
     {id: x}
