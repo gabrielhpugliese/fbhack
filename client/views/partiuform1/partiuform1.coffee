@@ -16,7 +16,7 @@ Template.Partiuform1.events {
       )
     )
 
-    Router.go('party',party._id)
+    Router.go('party',{_id: party._id})
 
   'click #partyStop': (e,t) ->
     Parties.remove({_id: Parties.current()._id})

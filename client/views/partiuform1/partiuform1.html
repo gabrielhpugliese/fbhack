@@ -1,34 +1,35 @@
 <template name="Partiuform1">
-  {{#unless currentParty }}
-    <div class="section card transparent mast ques" dir="ltr" style="margin-top: 62px;">
-        <div class="header">
-            <div class="site-title">
-                #partiu<input id="party-title" type="text">
-            </div>
-        </div>
-    </div>
-
-    {{#each groupButtons}}
-      {{ eid }}
-    {{/each}}
-
-    {{#each $.Session.get 'friends'}}
-      <div class='friends-selector'>
-        <input type="checkbox" name="friend" value="{{ id }}" id="{{ id }}"/>
-
-        <label for='{{ id }}'>
-          <img src='{{ largeImage id }}' class="friend-image"/>
-          {{name}}
-        </label>
+  <div class="section card transparent mast ques" dir="ltr" style="margin-top: 62px;">
+    {{#unless currentParty }}
+      <div class="header">
+          <div class="site-title">
+              #partiu<input id="party-title" type="text">
+          </div>
       </div>
-    {{/each}}
-    <div class='party-actions'>
-      <a id='partyStart' class='btn blue'>Start</a>
-    </div>
-  {{else}}
-    <div class="section card transparent mast ques" dir="ltr" style="margin-top: 62px;">
-      Tenho Party
-    </div>
-    <a id='partyStop' class='btn'>Stop</a> 
-  {{/unless}}
+      {{#each groupButtons}}
+        {{ eid }}
+      {{/each}}
+
+      {{#each $.Session.get 'friends'}}
+        <div class='friends-selector'>
+          <input type="checkbox" name="friend" value="{{ id }}" id="{{ id }}"/>
+
+          <label for='{{ id }}'>
+            <img src='{{ largeImage id }}' class="friend-image"/>
+            {{name}}
+          </label>
+        </div>
+      {{/each}}
+      <div class='party-actions'>
+        <a id='partyStart' class='btn blue'>Start</a>
+      </div>
+    {{else}}
+      <div class="header">
+        <div class="site-title">
+            #partiu<input id="party-title" type="text" disabled value="{{currentParty.title }}">
+        </div>
+      </div>
+      <a id='partyStop' class='btn blue'>Stop</a>
+    {{/unless}}
+ </div>
 </template>

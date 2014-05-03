@@ -1,6 +1,13 @@
 /*****************************************************************************/
 /* Global CSS Styles */
 /*****************************************************************************/
+.section.nav{
+	display:none;
+}
+
+.padded{
+	margin-top:64px;
+}
 
 [touch-action="none"]{ -ms-touch-action: none; touch-action: none; }[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }[touch-action="scroll"],[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }
 .tk-freight-sans-pro{font-family:"freight-sans-pro",sans-serif;}
@@ -128,9 +135,9 @@ form input, form select, form textarea {
 	width:128px;
 	height:128px;
 	box-shadow:inset 1px 1px 40px 0 rgba(0,0,0,.45);
-	border-bottom:2px solid #fff; 
+	border-bottom:2px solid #fff;
 	border-right:2px solid #fff;
-	margin:5% auto 0 auto; 
+	margin:5% auto 0 auto;
 	background-size:cover;
 	border-radius:5px;
 	overflow:hidden;
