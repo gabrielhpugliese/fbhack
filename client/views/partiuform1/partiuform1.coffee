@@ -46,7 +46,7 @@ Deps.autorun ->
     return
 
   FB.api "/me/friends", 'get', null, (response) ->
-    Session.set('friends',_.sample(response.data,20))
+    Session.set('friends',response.data)
 
   title = Parties.current().title
   FB.api {
