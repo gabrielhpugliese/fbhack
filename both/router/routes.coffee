@@ -17,8 +17,3 @@ Router.map ->
   this.route 'past.parties', path: '/partidas'
 # end map
 #
-Router.onBeforeAction ->
-  unless Meteor.user()
-    console.log 'gogogog'
-    Router.go('index')
-, except: ['redirect', 'index', 'party']

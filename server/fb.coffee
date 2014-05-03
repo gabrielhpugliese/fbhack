@@ -26,7 +26,7 @@ Meteor.methods
     Async.runSync (done) ->
       url = 'https://graph.facebook.com/v2.0/me/feed?access_token=' + Meteor.user().services.facebook.accessToken
       party = Parties.current()
-      partyUrl = Meteor.absoluteUrl() + 'party/' + party._id
+      partyUrl = Meteor.absoluteUrl() + 'partida/' + party._id
       HTTP.post url, {params: {
           message: '#partiu' + party.title + ' ' + partyUrl
           tags: party.friends.join(','),
