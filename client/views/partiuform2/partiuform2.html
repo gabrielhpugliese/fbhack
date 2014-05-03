@@ -1,4 +1,13 @@
 <template name="Partiuform2">
+  {{ currentParty.title }}
+  {{ currentParty.friends }}  
+  {{#each groupButtons}}
+    {{ eid }}
+  {{/each}}
+
+  {{#if currentParty}}
+    <a id='step2Submit' class='btn btn-primary'>With Friends</a>
+  {{/if}}
   {{#each $.Session.get 'friends'}}
     <div id='friends-selector'>
       <input type="checkbox" name="friend" value="{{ id }}" id="{{ id }}"/>
@@ -9,5 +18,4 @@
       </label>
     </div>
   {{/each}} 
-  <a id='step2Submit' class='btn btn-primary'>With Friends</a>
 </template>

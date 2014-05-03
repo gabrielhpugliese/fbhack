@@ -5,6 +5,7 @@
     "bootstrap-3": {},
     "npm": {},
     "handlebar-helpers": {},
-    "facebook-sdk": {}
+    "facebook-sdk": {},
+    "collection-hooks": {}
   }
 }

@@ -1,5 +1,4 @@
 @Parties = new Meteor.Collection 'parties'
 
-@Parties.current = ->
-  #@find({ownerId: aqui})
-  @findOne()
+Parties.current = ->
+  @findOne({},{sort: {createdAt: -1}})

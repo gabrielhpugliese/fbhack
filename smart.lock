@@ -7,7 +7,8 @@
       "bootstrap-3": {},
       "npm": {},
       "handlebar-helpers": {},
-      "facebook-sdk": {}
+      "facebook-sdk": {},
+      "collection-hooks": {}
     },
     "packages": {
       "stylus-latest": {
@@ -39,6 +40,11 @@
         "git": "https://github.com/hugesuccess/facebook-sdk.git",
         "tag": "v0.0.44",
         "commit": "cb71b860085ec6453b61644b31f6351e7de2c1b0"
+      },
+      "collection-hooks": {
+        "git": "https://github.com/matb33/meteor-collection-hooks.git",
+        "tag": "v0.6.3",
+        "commit": "70f2598bf991cb36effd72aea2555cba96f88355"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
