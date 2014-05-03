@@ -1,8 +1,6 @@
 Template.Partiuform1.events {
   'click #partyStart': (e,t) ->
     friends = _.map($('#users .selected'), (check) -> return $(check).find('input[name=user_id]').val())
-    console.log "friends"
-    console.log friends    
 
     party =
       title: $('#party-title').val()
@@ -28,21 +26,48 @@ Template.Partiuform1.events {
     friends = Session.get 'friends'
     regex = new RegExp(keyword, 'i')
 
-    friends = _.map friends, (friend) ->
-      if keyword.length > 2 and regex.test(friend.name)
-        friend.visible = ''
-      else
-        friend.visible = 'hide'
-      return friend
-    Session.set 'friends', friends
+    firsts = []
+    lasts = []
+    initials = Session.get 'initials'
+
+    if keyword.length == 0
+      _.each friends, (friend) ->
+        if friend.selected
+          firsts.push friend
+
+      lasts = _.difference(initials,firsts)
+    else
+      _.each friends, (friend) ->
+        if friend.selected
+          firsts.push friend
+        else
+          if keyword.length > 2
+            if regex.test(friend.name)
+              friend.visible = ''
+            else
+              friend.visible = 'hide'
+          lasts.push friend
+
+    Session.set 'friends', _.union(firsts,lasts)
 
   'click #users .user': (e, t) ->
-    console.log 'aki'
     e.preventDefault()
     $target = t.$(e.target)
     if not $target.hasClass 'user'
       $target = $target.closest '.user'
+
     $target.toggleClass 'selected'
+
+    friends = Session.get 'friends'
+
+    friends = _.map friends, (f) =>
+      if this.id == f.id
+        console.log(this)
+        console.log(this.id)
+        f.selected = $target.hasClass 'selected'
+      return f
+
+    Session.set('friends',friends)
 
 ###
   $("#users").on "click", ".user_group", (e) ->
@@ -55,6 +80,9 @@ Template.Partiuform1.events {
 Template.Partiuform1.helpers {
   largeImage: (id) ->
     "http://graph.facebook.com/"+id+"/picture?type=large"
+  selectedClass: (selected) ->
+    if selected
+      'selected'
 }
 
 Template.Partiuform1.groupButtons = ->
@@ -81,6 +109,12 @@ Deps.autorun ->
     data = _.map response.data, (d) ->
       d.visible = 'hide'
       return d
+
+    initial = _.sample(data,21)
+    _.each initial, (d) ->
+      d.visible = ''
+
+    Session.set('initials', initial)
     Session.set('friends', data)
 
   party = Parties.current()
