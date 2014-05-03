@@ -145,7 +145,11 @@ Template.Partiuform1.rendered = ->
       x = _.map data, (item) ->
         { eid: item.eid }
       Session.set 'groupList', x
+  return
 
 Template.Partiuform1.destroyed = ->
-  @run.stop()
+  try
+    @run.stop()
+  catch err
+  return
 

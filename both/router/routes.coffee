@@ -19,5 +19,6 @@ Router.map ->
 #
 Router.onBeforeAction ->
   unless Meteor.user()
+    console.log 'gogogog'
     Router.go('index')
-, except: ['redirect', 'index']
+, except: ['redirect', 'index', 'party']

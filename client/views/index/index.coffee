@@ -21,5 +21,11 @@ Template.Index.helpers
 Template.Index.created = ->
 
 Template.Index.rendered = ->
+  @redir = Deps.autorun ->
+    party = Parties.current()
+    if party and Meteor.user()
+      console.log 'indo pra party'
+      Router.go('party', _id: party._id)
 
 Template.Index.destroyed = ->
+  @redir.stop()
