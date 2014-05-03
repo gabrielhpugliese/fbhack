@@ -15,6 +15,8 @@ Meteor.setInterval ->
           havePost = Posts.findOne partyId: party._id, 'post.id': post.id
           if havePost
             return
+          if moment(post.created_time) < moment(party.createdAt)
+            return
           Posts.insert partyId: party._id, post: post
 , 5*1000
 
@@ -25,8 +27,8 @@ Meteor.methods
       party = Parties.current()
       partyUrl = Meteor.absoluteUrl() + 'party/' + party._id
       HTTP.post url, {params: {
-          message: 'Eh noi ' + partyUrl + ' ' + party.friends.join(','),
-          tags: 'fabsn' or party.friends.join(','),
-          place: '471431836321883'
+          message: '#partiu ' + party.title + ' ' + partyUrl
+          tags: party.friends.join(','),
+          place: '298042960354301'
         }}, (err, res) ->
         done null, res or err
