@@ -1,19 +1,22 @@
 <template name="Party">
   <div class="section card transparent mast ques" dir="ltr">
     <div class="header">
-      <div class="site-title">
-          #partiu<input id="party-title" type="text" disabled value="{{title}}">
+      <div class="site-title row">
+          <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">#partiu<input id="party-title" type="text" disabled value="{{title}}"></div>
           {{#unless $eq status 'finished'}}
             {{#if $eq ownerId $.Meteor.userId}}
-              <a id='partyStop' class='btn blue'>Stop</a>
+              <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2"><a id='partyStop' class='btn blue'>Parar</a></div>
             {{/if}}
           {{/unless}}
       </div>
-      <div>
-          com:
-          {{#each friendsJson }}
-            <img src='{{ smallImage id}}'/>
-          {{/each}}
+      <div class="row">
+        <div id="small-img" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 center" style="padding-left: 50px;">
+          <ul class="list-inline">
+            {{#each friendsJson }}
+              <li><img src="{{ smallImage id}}" class="img-responsive"/></li>
+            {{/each}}
+           </ul>            
+        </div>
       </div>
     </div>
     <div class="section questions card">

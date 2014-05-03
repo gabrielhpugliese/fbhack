@@ -21,6 +21,9 @@ Example:
 Template.MasterLayout.created = ->
 
 Template.MasterLayout.rendered = ->
+	@$("img.mobile-menu").click =>
+	  $(".section:first").toggleClass "show"
+	  return
 
 Template.MasterLayout.destroyed = ->
 

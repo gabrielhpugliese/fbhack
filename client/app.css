@@ -10,7 +10,7 @@
 }
 
 #party-title{
-	width: 40%;
+	width: 50%;
 }
 
 .typeahead{
@@ -245,5 +245,9 @@ form input, form select, form textarea {
 }
 
 .nav {
+	/*display: block !important;*/
+}
+
+.nav .show {
 	display: block !important;
 }
