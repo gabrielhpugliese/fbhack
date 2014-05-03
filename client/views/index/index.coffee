@@ -1,7 +1,10 @@
 ###
  Index: Event Handlers and Helpers
 ###
-Template.Index.events {}
+Template.Index.events {
+  'click #facebookLogin': () ->
+    $(".single-login-button").click()
+}
 ###
 Example:
  'click .selector': (e, tmpl) ->
