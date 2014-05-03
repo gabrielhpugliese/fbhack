@@ -227,6 +227,14 @@ form input, form select, form textarea {
   color: #FFF;
 }
 
+#login-buttons-facebook span {
+  display: none;
+}
+
+#login-buttons-facebook:after {
+  content: 'Sign in';
+}
+
 .login-display-name {
   display: none; 
 }
