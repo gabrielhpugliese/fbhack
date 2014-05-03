@@ -1,30 +1,38 @@
 <template name="Party">
-  <ul>
-    {{#each posts}}
-      <li>
-        <img src="{{post.icon}}" alt="" />
-      {{#if $eq post.type 'status'}}
-        {{> TextPost}}
-      {{/if}}
-    
-      {{#if $eq post.type 'photo'}}
-        {{> PhotoPost}}
-      {{/if}}
+  <div class="section card transparent mast ques" dir="ltr" style="margin-top: 62px;">
+    <div class="header">
+      <div class="site-title">
+          #partiu<input id="party-title" type="text" disabled value="{{currentParty.title }}">
+      </div>
+      <a id='partyStop' class='btn blue'>Stop</a>
+    </div>
+    <ul>
+      {{#each posts}}
+        <li>
+          <img src="{{post.icon}}" alt="" />
+        {{#if $eq post.type 'status'}}
+          {{> TextPost}}
+        {{/if}}
 
-      {{#if $eq post.type 'video'}}
-        {{> VideoPost}}
-      {{/if}}
+        {{#if $eq post.type 'photo'}}
+          {{> PhotoPost}}
+        {{/if}}
 
-      {{#if $eq post.type 'link'}}
-        {{> LinkPost}}
-      {{/if}}
-      </li>
-    {{/each}}
-  </ul>
+        {{#if $eq post.type 'video'}}
+          {{> VideoPost}}
+        {{/if}}
+
+        {{#if $eq post.type 'link'}}
+          {{> LinkPost}}
+        {{/if}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
 </template>
 
 <template name="TextPost">
-  {{post.from.name}}: {{$or post.story post.message}} 
+  {{post.from.name}}: {{$or post.story post.message}}
 </template>
 
 <template name="PhotoPost">

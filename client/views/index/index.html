@@ -1,8 +1,6 @@
 <template name="Index">
   {{#unless currentUser }}
-    <div class="section card transparent mast ques" dir="ltr" style="margin-top: 62px;">
-      {{> loginButtons}}
-    </div>
+    {{> loginButtons}}
   {{else}}
     {{> Partiuform1}}
   {{/unless}}
