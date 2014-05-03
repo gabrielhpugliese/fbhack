@@ -30,7 +30,7 @@
                   <div id="users">
                   {{#each $.Session.get 'friends'}}
 
-                      <div class="user {{visible}}">
+                      <div class="user {{visible}} {{selectedClass selected}}" data-id="{{ id }}">
                           <input type="hidden" name="user_id" value="{{ id }}" id="{{ id }}"/>
                           <div class="box" style="background:url({{ largeImage id }});">
                               <div class="overlay"><span class="plus">+</span></div>
@@ -41,9 +41,10 @@
                   </div>
               </div>
           </div>
+          <div class='party-actions'>
+              <a id='partyStart' class='btn blue'>Start</a>
+          </div>
       </div>
-
-
     <div class='party-actions'>
       <a id='partyStart' class='btn blue'>Start</a>
     </div>

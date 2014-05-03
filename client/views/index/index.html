@@ -1,6 +1,8 @@
 <template name="Index">
   {{#unless currentUser }}
-    {{> loginButtons}}
+    <div class='padded'>
+      {{> loginButtons}}
+    </div>
   {{else}}
     {{> Partiuform1}}
   {{/unless}}
