@@ -5,6 +5,9 @@ Template.Partiuform2.events {
     Parties.update({_id: party._id},{$set: {friends: friends}})
 }
 
+Template.Partiuform2.groupButtons = ->
+  Session.get 'groupList'
+
 Template.Partiuform2.helpers {
   largeImage: (id) ->
     "http://graph.facebook.com/"+id+"/picture?type=large"
@@ -24,6 +27,16 @@ Template.Partiuform2.rendered = ->
         return
       Meteor.clearInterval interval
   , 1000
+
+  name = Parties.current().title
+  FB.api {
+    method: 'fql.query',
+    query: "SELECT eid , start_time FROM event WHERE name = '" + name + "'"
+  }, (data) ->
+    Session.set 'groupList', _.map data, (item) ->
+      console.log(item.eid)
+      { eid: item.eid }
+
 
 
 Template.Partiuform2.destroyed = ->

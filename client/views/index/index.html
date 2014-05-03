@@ -1,22 +1,22 @@
 <template name="Index">
-    {{#if stepGreater '1' }}
-      1) #partiu
-      {{> Partiuform1}}
-    {{/if}}
+    {{#unless currentUser }}
+      {{> loginButtons}}
+    {{else}}
+      {{#if stepGreater '1' }}
+        1) #partiu
+        {{> Partiuform1}}
+        {{> Partiuform2}}
+      {{/if}}
 
-    {{#if stepGreater '2' }}
-      2) Amigos
-      {{> Partiuform2}}
-    {{/if}}
-
-    {{#if stepGreater '3' }}
-      3) #partiu
-      {{> Partiuform3}}
-    {{/if}}
+      {{#if stepGreater '2' }}
+        3) #partiu
+        {{> Partiuform3}}
+      {{/if}}
 
 
-    {{#if stepGreater '4' }}
-      4) #paritu
-      {{> Partiuform4}}
-    {{/if}}
+      {{#if stepGreater '3' }}
+        4) #paritu
+        {{> Partiuform4}}
+      {{/if}}
+    {{/unless}}
 </template>
