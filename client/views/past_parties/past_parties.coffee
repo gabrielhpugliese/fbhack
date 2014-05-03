@@ -3,17 +3,21 @@
 ###
 Template.PastParties.events {}
 ###
-Example: 
+Example:
  'click .selector': (e, tmpl) ->
-### 
+###
 
 Template.PastParties.helpers
   pastParties: ->
     console.log 'aki'
     Parties.find {$or: [{ownerId: Meteor.userId()}, {friends: Meteor.userId()}]}
+  friendsFor: (id) ->
+    _.first(Parties.friendsJson(id), 5)
+  hasMoreThan5: (id) ->
+    Parties.friendsJson(id).length > 5
 
 ###
-Example: 
+Example:
  items: ->
    Items.find()
 ###

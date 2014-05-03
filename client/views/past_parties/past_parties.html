@@ -5,16 +5,24 @@
             Albuns passados
           </div>
       </div>
-      <ul>
-      {{#each pastParties}}
-      <li>
-        <a href="
-        {{pathFor 'party'}} 
-        ">
-        {{title}}
-      </a>  
-      </li>
-      {{/each}}
+      <ul class='past-parties'>
+        {{#each pastParties}}
+        <li class='past-party'>
+          <div class='past-content'>
+            {{#each friendsFor _id}}
+              <img src='{{ smallImage id}}'/>
+            {{/each}}
+            {{#if hasMoreThan5 _id}}
+              <img width="50px" height="50px" src='https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519720-228_ArrowTurnMore-64.png'/>
+            {{/if}}
+          </div>
+          <h1>
+            <a href="{{pathFor 'party'}}">
+              #partiu{{title}}
+            </a>
+          </h1>
+        </li>
+        {{/each}}
       </ul>
   </div>
 </template>
