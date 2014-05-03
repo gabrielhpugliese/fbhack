@@ -24,11 +24,18 @@ Template.Partiuform2.helpers {
 Template.Partiuform2.created = ->
 
 Template.Partiuform2.rendered = ->
-  interval = Meteor.setInterval ->
+  FB.Event.subscribe 'auth.statusChange', (res) ->
     console.log('oi')
-    console.log(@fbAsyncInit())
-    if not @fbAsyncInit
-      console.log("cant")
+    if res.status == 'connected'
+        Session.set('fbinit',true)
+
+Template.Partiuform2.destroyed = ->
+
+Deps.autorun ->
+  unless Session.get('fbinit')
+    return
+
+  interval = Meteor.setInterval ->
     FB.api "/me/friends", 'get', null, (response) ->
       Session.set('friends',_.sample(response.data,20))
       if response.error
@@ -39,12 +46,11 @@ Template.Partiuform2.rendered = ->
   name = Parties.current().title
   FB.api {
     method: 'fql.query',
-    query: "SELECT eid , start_time FROM event WHERE name = '" + name + "'"
+    query: "SELECT eid , start_time FROM event WHERE contains('" + name + "')"
   }, (data) ->
-    Session.set 'groupList', _.map data, (item) ->
+    console.log("PIrata")
+    console.log(data)
+    x = _.map data, (item) ->
       console.log(item.eid)
       { eid: item.eid }
-
-
-
-Template.Partiuform2.destroyed = ->
+    Session.set 'groupList', x
