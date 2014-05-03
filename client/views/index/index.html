@@ -1,4 +1,9 @@
 <template name="Index">
+  {{#unless currentUser }}
+    <div class="section card transparent mast ques" dir="ltr" style="margin-top: 62px;">
+      {{> loginButtons}}
+    </div>
+  {{else}}
     {{#if stepGreater '1' }}
       {{> Partiuform1}}
       {{> Partiuform2}}
@@ -11,4 +16,5 @@
     {{#if stepGreater '4' }}
       {{> Partiuform4}}
     {{/if}}
+  {{/unless}}
 </template>

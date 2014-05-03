@@ -38,16 +38,14 @@ Deps.autorun ->
 
   FB.api "/me/friends", 'get', null, (response) ->
     Session.set('friends',_.sample(response.data,20))
-    if response.error
-      return
-    Meteor.clearInterval interval
-
-  name = Parties.current().title
+    
+  title = Parties.current().title
   FB.api {
     method: 'fql.query',
-    query: "SELECT eid , start_time FROM event WHERE contains('" + name + "')"
+    query: "select name, start_time, eid FROM event where contains('" + name + "')
+    AND eid IN (SELECT eid FROM event_member WHERE eid in
+    (SELECT eid FROM event WHERE contains('" + name + "')) AND uid = me() AND rsvp_status = 'attending')"
   }, (data) ->
-    console.log("PIrata")
     console.log(data)
     x = _.map data, (item) ->
       console.log(item.eid)
